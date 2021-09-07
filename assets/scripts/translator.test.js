@@ -1,6 +1,8 @@
 import { expect } from "@jest/globals";
 import englishToMorseCode from "./translator";
 
+// TODO: improve test descriptions
+
 describe("englishToMorseCode() tests", () => {    
     test("Should return ******", () => {
         const result = englishToMorseCode("hi");
@@ -22,6 +24,8 @@ describe("englishToMorseCode() tests", () => {
         
         expect(result).toBe(outcome);
     })
+
+    // TODO: add test for number input
     
     test("Should return <i>Invalid input</i>", () => {
         const result = englishToMorseCode("");

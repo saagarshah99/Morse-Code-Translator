@@ -1,28 +1,49 @@
-// comparing english text with morse code translations using dictionary array
-const englishToMorseCode = (englishText) => {
-    if(!englishText) return "<i>Invalid input</i>";
-    
+// return array containing translations (https://www.sckans.edu/~sireland/radio/code.html)
+const getMorseCodeDictionary = () => {
     const dictionary = [
+        // letters
         ["A", "*-"], ["B", "-***"], ["C", "-*-*"], ["D", "-**"],
         ["E", "*"], ["F", "**-*"], ["G", "--*"], ["H", "****"],
         ["I", "**"], ["J", "*---"], ["K", "-*-"], ["L", "*-**"],
         ["M", "--"], ["N", "-*"], ["O", "---"], ["P", "*--*"],
         ["Q", "--*-"], ["R", "*-*"], ["S", "***"], ["T", "-"],
         ["U", "**-"], ["V", "***-"], ["W", "*--"], ["X", "-**-"],
-        ["Y", "-*--"], ["Z", "--**"]
+        ["Y", "-*--"], ["Z", "--**"],
+
+        // numbers
+        ["1", "*----"], ["2", "**---"], ["3", "***--"], ["4", "****-"],
+        ["5", "*****"], ["6", "-****"], ["7", "--***"], ["8", "---**"],
+        ["9", "----*"], ["0", "-----"],
+
+        // special characters
+        [".", "*-*-*-"], [",", "--**--"], [":", "---***"], ["?", "**--**"],
+        ["'", "*----*"], ["-", "-****-"], ["/", "-**-*"], ["(", "-*--*-"],
+        [")", "-*--*-"], [" ", " "]
     ];
+
+    return dictionary;
+}
+
+// return true if an empty string is provided
+const containsOnlySpaces = (str) => !/\S/.test(str);
+const isEmpty = (str) => !str || containsOnlySpaces(str);
+
+// comparing english text with morse code translations using dictionary array
+const englishToMorseCode = (englishText) => {
+    if(isEmpty(englishText)) return "<i>Invalid input</i>";
+    
+    const dictionary = getMorseCodeDictionary();
 
     // split english into array, return morse code translation and join back into string
     return englishText.split("").map((character) => {
         for (let i = 0; i < dictionary.length; i++) {
+            
+            // TODO: separation of concerns, single responsiblity principle - additional tests might be needed then
             if(character.toUpperCase() === dictionary[i][0]) {
                 return dictionary[i][1];
-            }
-            else if(!character.toUpperCase().match(/^[A-Z]*$/)) {
-                return character;
             }
         }
     }).join("");
 }
 
-export default englishToMorseCode; //exporting function for testing
+export default englishToMorseCode;
