@@ -16,9 +16,9 @@ describe("englishToMorseCode() tests", () => {
         expect(result).toBe(outcome);
     })
     
-    test("Should return the same punctuation and spaces", () => {
+    test("Should return translation for punctuation also", () => {
         const result = englishToMorseCode("okay, thanks");
-        const outcome = "----*-*--*--, -*****--*-*-***";
+        const outcome = "----*-*--*----**-- -*****--*-*-***";
         
         expect(result).toBe(outcome);
     })
