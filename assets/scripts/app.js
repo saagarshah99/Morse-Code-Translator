@@ -1,4 +1,4 @@
-import englishToMorseCode from "./translator.js";
+import {englishToMorseCode} from "./translator.js";
 
 // take english text entered in textbox and pass into translation function when submit is clicked
 document.querySelector(".translator").addEventListener("submit", (event) => {

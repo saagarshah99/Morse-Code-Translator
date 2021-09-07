@@ -1,5 +1,3 @@
-// TODO: improve file/folder structure of JS, see Helen's
-
 // return array containing translations (https://www.sckans.edu/~sireland/radio/code.html)
 const getDictionary = () => {
     return [
@@ -24,6 +22,10 @@ const getDictionary = () => {
     ];
 }
 
+
+
+/***********************HELPER FUNCTIONS************************/
+
 // return true if an empty string/string with spaces only is provided
 const isEmpty = (str) => !str || !/\S/.test(str);
 
@@ -34,6 +36,10 @@ const capitaliseIfLetter = (character) => {
     }
     return character;
 }
+
+
+
+/***********************MAIN LOGIC************************/
 
 //fetching corrsponding morse code translation from dictionary for current character
 const checkDictionary = (character) => {
@@ -53,4 +59,4 @@ const englishToMorseCode = (englishText) => {
     return englishText.split("").map((character) => checkDictionary(character)).join("")
 }
 
-export default englishToMorseCode;
+export {englishToMorseCode, isEmpty, checkDictionary, capitaliseIfLetter};
