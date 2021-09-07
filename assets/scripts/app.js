@@ -4,9 +4,9 @@ import englishToMorseCode from "./translator.js";
 document.querySelector(".translator").addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const englishText = document.querySelector(".translator__text");
-    const morseTranslation =  englishToMorseCode(englishText.value);
+    const englishText = document.querySelector(".translator__text").value;
+    const morseTranslation = englishToMorseCode(englishText);
     
-    const morseOutput = document.querySelector(".morse-code");
-    morseOutput.innerHTML = "<b>Morse Code:</b> " + morseTranslation;
+    const outputMorse = document.querySelector(".morse-code");
+    outputMorse.innerHTML = "<b>Morse Code:</b> " + morseTranslation;
 })

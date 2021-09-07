@@ -1,8 +1,8 @@
 // TODO: improve file/folder structure of JS, see Helen's
 
 // return array containing translations (https://www.sckans.edu/~sireland/radio/code.html)
-const getMorseCodeDictionary = () => {
-    const dictionary = [
+const getDictionary = () => {
+    return [
         // letters
         ["A", "*-"], ["B", "-***"], ["C", "-*-*"], ["D", "-**"],
         ["E", "*"], ["F", "**-*"], ["G", "--*"], ["H", "****"],
@@ -22,39 +22,35 @@ const getMorseCodeDictionary = () => {
         ["'", "*----*"], ["-", "-****-"], ["/", "-**-*"], ["(", "-*--*-"],
         [")", "-*--*-"], [" ", " "]
     ];
-
-    return dictionary;
 }
 
-// return true if an empty string is provided
-const containsOnlySpaces = (str) => !/\S/.test(str);
-const isEmpty = (str) => !str || containsOnlySpaces(str);
+// return true if an empty string/string with spaces only is provided
+const isEmpty = (str) => !str || !/\S/.test(str);
 
 // if the given character is a letter, capitalise it
-const processCharacter = (character) => {
+const capitaliseIfLetter = (character) => {
     if(/[a-zA-Z]/.test(character)) {
         return character.toUpperCase();
     }
     return character;
 }
 
-// comparing english text with morse code translations using dictionary array
+//fetching corrsponding morse code translation from dictionary for current character
+const checkDictionary = (character) => {
+    const dictionary = getDictionary();
+    
+    for (let i = 0; i < dictionary.length; i++) {
+        if(capitaliseIfLetter(character) === dictionary[i][0]) {
+            return dictionary[i][1];
+        }
+    }
+}
+
+// split english into array, return morse code translation and join back into string
 const englishToMorseCode = (englishText) => {
     if(isEmpty(englishText)) return "<i>Invalid input</i>";
-    
-    const dictionary = getMorseCodeDictionary();
 
-    // split english into array, return morse code translation and join back into string
-    return englishText.split("").map((character) => {
-        for (let i = 0; i < dictionary.length; i++) {
-            
-            // TODO: single responsiblity principle - additional tests might be needed then
-            // TODO: move this to separate function and use regex to only use toUpperCase() if it's a letter
-            if(processCharacter(character) === dictionary[i][0]) {
-                return dictionary[i][1];
-            }
-        }
-    }).join("");
+    return englishText.split("").map((character) => checkDictionary(character)).join("")
 }
 
 export default englishToMorseCode;
