@@ -1,3 +1,5 @@
+// TODO: improve file/folder structure of JS, see Helen's
+
 // return array containing translations (https://www.sckans.edu/~sireland/radio/code.html)
 const getMorseCodeDictionary = () => {
     const dictionary = [
@@ -28,6 +30,14 @@ const getMorseCodeDictionary = () => {
 const containsOnlySpaces = (str) => !/\S/.test(str);
 const isEmpty = (str) => !str || containsOnlySpaces(str);
 
+// if the given character is a letter, capitalise it
+const processCharacter = (character) => {
+    if(/[a-zA-Z]/.test(character)) {
+        return character.toUpperCase();
+    }
+    return character;
+}
+
 // comparing english text with morse code translations using dictionary array
 const englishToMorseCode = (englishText) => {
     if(isEmpty(englishText)) return "<i>Invalid input</i>";
@@ -38,8 +48,9 @@ const englishToMorseCode = (englishText) => {
     return englishText.split("").map((character) => {
         for (let i = 0; i < dictionary.length; i++) {
             
-            // TODO: separation of concerns, single responsiblity principle - additional tests might be needed then
-            if(character.toUpperCase() === dictionary[i][0]) {
+            // TODO: single responsiblity principle - additional tests might be needed then
+            // TODO: move this to separate function and use regex to only use toUpperCase() if it's a letter
+            if(processCharacter(character) === dictionary[i][0]) {
                 return dictionary[i][1];
             }
         }
