@@ -9,17 +9,18 @@
     <link rel="shortcut icon" href="#" type="image/x-icon">
 </head>
 <body>
-    <h1>Morse Code Translator</h1>
-    <form class="translator">
-        <label><b>English:</b> </label>
-        <input class="translator__text" type="text">
+    <section class="translator">
+        <h2  class="translator__heading">Morse Code Translator</h1>
+        <form class="translator__form">
+            <label><b>English:</b> </label>
+            <input class="translator__text" type="text">
 
-        <input type="submit" class="translator__submit" value="Translate">
-    </form>
+            <input type="submit" class="translator__submit" value="Translate">
+        </form>
 
-    <p class="morse-code"></p>
+        <p class="translator__output"></p>
+    </section>
 
-    <script type="module" src="./assets/scripts/translator.js"></script>
     <script type="module" src="./assets/scripts/app.js"></script>
 </body>
 </html>
