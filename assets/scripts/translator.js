@@ -59,4 +59,8 @@ const englishToMorseCode = (englishText) => {
     return englishText.split("").map((character) => checkDictionary(character)).join("")
 }
 
+
+
+
+// exporting multiple functions at once
 export {englishToMorseCode, isEmpty, checkDictionary, capitaliseIfLetter};

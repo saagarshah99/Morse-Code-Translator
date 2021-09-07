@@ -1,4 +1,4 @@
-import { expect } from "@jest/globals";
+// importing multiple functions at once
 import {englishToMorseCode, checkDictionary, isEmpty, capitaliseIfLetter} from "./translator";
 
 

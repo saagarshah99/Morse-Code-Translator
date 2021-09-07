@@ -2,3 +2,49 @@
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+}
+
+// auto-changing gradient background
+.translator {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+    width: 50vw;
+    height: 40vh;
+    background: linear-gradient(-45deg, #449DD1, orange, #3943B7, limegreen);
+    background-size: 1000%;
+    animation: gradient 25s ease infinite;
+}
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+@media screen and (max-width: 992px) {
+    .translator {
+        &__heading, &__output {
+            text-align: center;
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .translator {
+        &__form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+    }
+}
