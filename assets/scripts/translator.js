@@ -9,7 +9,7 @@ const englishToMorseCode = (englishText) => {
         ["M", "--"], ["N", "-*"], ["O", "---"], ["P", "*--*"],
         ["Q", "--*-"], ["R", "*-*"], ["S", "***"], ["T", "-"],
         ["U", "**-"], ["V", "***-"], ["W", "*--"], ["X", "-**-"],
-        ["Y", "-*--"], ["Z", "--**"], [" ", " "]
+        ["Y", "-*--"], ["Z", "--**"]
     ];
 
     // split english into array, return morse code translation and join back into string
@@ -17,6 +17,9 @@ const englishToMorseCode = (englishText) => {
         for (let i = 0; i < dictionary.length; i++) {
             if(character.toUpperCase() === dictionary[i][0]) {
                 return dictionary[i][1];
+            }
+            else if(!character.toUpperCase().match(/^[A-Z]*$/)) {
+                return character;
             }
         }
     }).join("");
